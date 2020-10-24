@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#Author Bruno Goncalves  <www.biglinux.com.br>
+#License: GPLv2 or later                       
+#################################################
+
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-config
+
+# Don't group windows
+xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
+
+SEARCH=$"Pesquisar..."
+
+cat << EOF
+
+<head>
+    <title>BigLinux Tweaks</title>
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+    <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+    <script src="filter.js"></script>
+</head>
+
+<body>
+
+
+
+<div id=top_bar>
+<div id=top_bar_left>
+
+    <div id=title>
+        <img src=icon.png>BigLinux Tweaks
+    </div>
+    <div id=sub_title>
+EOF
+
+	echo $"Scripts de automação das mais variadas tarefas..."
+
+cat << EOF
+    </div>
+</div>
+<div id=top_bar_right>
+
+
+EOF
+
+echo '</div></div><div id=content>'
+
+echo '<div id=wait>'
+echo $"Aguarde, executando:" " $p_file"
+echo '</div>'
+
+echo "${p_dir}/${p_file}" > ~/.biglinux_tweaks_selected
+
+echo '<script>'
+
+
+    echo 'function pageRedirect() {
+        window.location.replace("install2.sh.htm");
+    }      
+    setTimeout("pageRedirect()", 10);
+</script>'
+

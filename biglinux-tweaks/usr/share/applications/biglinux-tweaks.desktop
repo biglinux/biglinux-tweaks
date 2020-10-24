@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=QT_QUICK_BACKEND= biglinux-tweaks
+Icon=biglinux-tweaks
+Name=BigLinux Tweaks
+Categories=System;
+StartupNotify=true
+Terminal=false
+Type=Application

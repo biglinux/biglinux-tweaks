@@ -1,0 +1,73 @@
+#!/bin/bash
+
+#Author Bruno Goncalves  <www.biglinux.com.br>
+#License: GPLv2 or later                       
+#################################################
+
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-config
+
+# Don't group windows
+xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
+
+SEARCH=$"Pesquisar..."
+
+cat << EOF
+
+<head>
+    <title>$TITLE</title>
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+    <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+    <script src="filter.js"></script>
+</head>
+
+<body>
+
+
+
+<div id=top_bar>
+<div id=top_bar_left>
+
+    <div id=title>
+        <img src=icon.png>BigLinux Tweaks
+    </div>
+    <div id=sub_title>
+EOF
+
+	echo $"Scripts de automação das mais variadas tarefas..."
+
+cat << EOF
+    </div>
+</div>
+<div id=top_bar_right>
+
+
+EOF
+
+echo '</div></div><div id=content>'
+
+
+
+WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb  -depth 32 -fg black -fn "xft:Ubuntu Mono:pixelsize=18" -pixmap terminalbg.jpg -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/biglinux-tweaks/terminal.sh
+
+
+echo '<div id=message_result>'
+cat /tmp/biglinux-tweaks-result.txt
+rm -f /tmp/biglinux-tweaks-result.txt
+echo '</div>'
+
+echo '<div id=button_back_and_close>'
+echo '<a href="index.sh.htm">'
+echo '<div class="waves-effect box button_tweak">'
+echo $"Voltar"
+echo '</div></a>'
+echo '<div>'
+echo '<a href="/usr/share/bigbashview/close.sh">'
+echo '<div class="waves-effect box button_tweak">'
+echo $"Fechar" '</div></a>'
+    
+echo '</div></div>'

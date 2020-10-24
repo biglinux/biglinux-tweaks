@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+
+
+cat << EOF
+
+<style>
+body {
+    background: url(bg.jpg);
+}
+
+</style>
+
+EOF
+
+
+echo '<title>BigLinux Tweaks</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+'
+
+DIR="$(pwd)/scripts"
+
+echo '<hr>
+<div class="media">
+  <img class="mr-3" src="icon.png" alt="Image" title="BigLinux Tweaks">
+  <div class="media-body">
+    <h4 class="mt-0">BigLinux Tweaks</h4>
+    Scripts de automação das mais variadas tarefas diárias...
+  </div>
+</div><hr>
+<table class="table table-hover">
+	<thead class="thead-dark">
+	  <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Ação</th>
+	</thead>'
+c=0
+for i in $DIR/*; do
+
+NAME="${i##*/}"
+COMMENT="$(. $i/desc)"
+
+cat << eof
+
+	<tr>
+		<th scope="row">$c</th>
+		<td>${NAME^^}</td>
+		<td>$COMMENT</td>
+		<td><a type="button" class="btn btn-primary" a href="install.sh.htm?file=$DIR/$NAME">Executar</a></td>
+
+	</tr>
+
+
+eof
+c=$((c+1))
+done
+
+echo "</table>"
+

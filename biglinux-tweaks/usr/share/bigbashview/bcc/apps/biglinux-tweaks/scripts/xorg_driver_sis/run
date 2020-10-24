@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+
+if [ "$(lspci | grep VGA | grep SiS)" = "" ]; then
+
+	echo $"Nenhuma placa de vídeo SiS foi detectada, a instalação foi cancelada!" > /tmp/biglinux-tweaks-result.txt
+	chmod 666 /tmp/biglinux-tweaks-result.txt
+	exit
+
+fi
+
+bigsudo $(pwd)/script.sh
+
+RET="$?"
+if [ "$RET" = "0" ];then
+
+	echo $"Driver de vídeo SiS instalado, reincie o computador!" > /tmp/biglinux-tweaks-result.txt
+
+else
+
+	echo $"Operação cancelada!" > /tmp/biglinux-tweaks-result.txt
+
+fi
+
+chmod 666 /tmp/biglinux-tweaks-result.txt

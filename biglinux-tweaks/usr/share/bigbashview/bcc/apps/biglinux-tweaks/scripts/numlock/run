@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+bigsudo $(pwd)/script.sh
+
+RET="$?"
+if [ "$RET" = "0" ];then
+
+	echo $"Numlock na Tela de Login (SDDM) ativado com sucesso!" > /tmp/biglinux-tweaks-result.txt
+
+else
+
+	echo $"Operação cancelada pelo usuário!" > /tmp/biglinux-tweaks-result.txt
+
+fi
+
+chmod 666 /tmp/biglinux-tweaks-result.txt
+exit

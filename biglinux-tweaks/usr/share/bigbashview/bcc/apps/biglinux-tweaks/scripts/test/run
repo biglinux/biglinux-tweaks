@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+$(pwd)/script.sh
+
+echo $"O script foi executado com sucesso!" > /tmp/biglinux-tweaks-result.txt
+
+chmod 666 /tmp/biglinux-tweaks-result.txt
+exit
