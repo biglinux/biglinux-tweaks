@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Author Bruno Goncalves  <www.biglinux.com.br>
-#License: GPLv2 or later                       
+#License: GPLv2 or later
 #################################################
 
 
@@ -13,6 +13,8 @@ export TEXTDOMAIN=biglinux-config
 xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
 
 SEARCH=$"Pesquisar..."
+
+echo "${dir}/${file}" > ~/.biglinux_tweaks_selected
 
 cat << EOF
 
@@ -29,8 +31,8 @@ cat << EOF
 
 
 
-<div id=top_bar>
-<div id=top_bar_left>
+<div id=tobar>
+<div id=tobar_left>
 
     <div id=title>
         <img src=icon.png>BigLinux Tweaks
@@ -43,25 +45,35 @@ EOF
 cat << EOF
     </div>
 </div>
-<div id=top_bar_right>
+<div id=tobar_right>
 
 
 EOF
 
 echo '</div></div><div id=content>'
 
-echo '<div id=wait>'
-echo $"Aguarde, executando:" " $p_file"
-echo '</div>'
+DIR=$(< ~/.biglinux_tweaks_selected)
 
-echo "${p_dir}/${p_file}" > ~/.biglinux_tweaks_selected
+if ! grep "modal" <<< $DIR >/dev/null;then
 
-echo '<script>'
+	echo '<div id=wait>'
+	echo $"Aguarde, executando:" " $file"
+	echo '</div>'
 
 
-    echo 'function pageRedirect() {
-        window.location.replace("install2.sh.htm");
-    }      
-    setTimeout("pageRedirect()", 10);
-</script>'
+
+	echo '<script>
+		function pageRedirect() {
+	        window.location.replace("install2.sh.htm");
+	    }
+	    setTimeout("pageRedirect()", 10);
+	</script>'
+
+else
+
+	echo "<script>
+        	window.location.replace('$DIR/run.sh.htm');
+		  </script>"
+
+fi
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Author Bruno Goncalves  <www.biglinux.com.br>
-#License: GPLv2 or later                       
+#License: GPLv2 or later
 #################################################
 
 
@@ -29,8 +29,8 @@ cat << EOF
 
 
 
-<div id=top_bar>
-<div id=top_bar_left>
+<div id=tobar>
+<div id=tobar_left>
 
     <div id=title>
         <img src=icon.png>BigLinux Tweaks
@@ -43,14 +43,12 @@ EOF
 cat << EOF
     </div>
 </div>
-<div id=top_bar_right>
+<div id=tobar_right>
 
 
 EOF
 
 echo '</div></div><div id=content>'
-
-
 
 WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb  -depth 32 -fg black -fn "xft:Ubuntu Mono:pixelsize=18" -pixmap terminalbg.jpg -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/biglinux-tweaks/terminal.sh
 
@@ -65,9 +63,10 @@ echo '<a href="index.sh.htm">'
 echo '<div class="waves-effect box button_tweak">'
 echo $"Voltar"
 echo '</div></a>'
-echo '<div>'
 echo '<a href="/usr/share/bigbashview/close.sh">'
 echo '<div class="waves-effect box button_tweak">'
 echo $"Fechar" '</div></a>'
-    
+
 echo '</div></div>'
+
+
