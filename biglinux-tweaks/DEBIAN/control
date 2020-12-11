@@ -1,5 +1,5 @@
 Package: biglinux-tweaks
-Version: 1.0.2-1big3
+Version: 1.0.2-1big4
 Depends: bigbashview
 Architecture: all
 Maintainer: eltonff <eltonfabricio10@gmail.com> and Bruno Goncalves <www.biglinux.com.br>
