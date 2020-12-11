@@ -1,10 +1,10 @@
 Package: biglinux-tweaks
-Version: 1.0.2-1big2
+Version: 1.0.2-1big3
 Depends: bigbashview
 Architecture: all
 Maintainer: eltonff <eltonfabricio10@gmail.com> and Bruno Goncalves <www.biglinux.com.br>
 Section: admin
 Priority: optional
-Installed-Size:208
+Installed-Size:220
 Description: Interface to run lot of scripts and make Linux more simple
 

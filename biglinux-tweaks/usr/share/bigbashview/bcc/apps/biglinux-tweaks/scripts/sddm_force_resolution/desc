@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+echo $"Forçar o SDDM (Tela de login) a utilizar a resolução atual"

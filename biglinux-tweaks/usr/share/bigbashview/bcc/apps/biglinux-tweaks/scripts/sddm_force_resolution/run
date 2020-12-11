@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+
+bigsudo $(pwd)/script.sh
+
+RET="$?"
+if [ "$RET" = "0" ];then
+
+	echo $"Configuração aplicada!" > /tmp/biglinux-tweaks-result.txt
+
+else
+
+	echo $"Operação cancelada!" > /tmp/biglinux-tweaks-result.txt
+
+fi
+
+chmod 666 /tmp/biglinux-tweaks-result.txt
