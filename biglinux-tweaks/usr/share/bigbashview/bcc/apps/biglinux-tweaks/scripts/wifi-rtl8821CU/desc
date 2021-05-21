@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-tweaks
+
+
+echo $"Instalar driver Realtek USB Wireless [rtl8821CU] [0bda:1a2b]"
