@@ -1,5 +1,5 @@
 d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
-5a459814cc14cae43727cc9236a1577e  DEBIAN/control
+9e6cda7644a2105641e3cb584aab9844  DEBIAN/control
 0e11434980e7d085a8bd475dabcd0aaf  usr/share/bigbashview/bcc/apps/biglinux-tweaks/scripts/numlock/script.sh
 71380a486e1f8797417dccf96e74ca9b  usr/share/bigbashview/bcc/apps/biglinux-tweaks/scripts/numlock/desc
 31ff5351a27897fb7df3a6fff22666cb  usr/share/bigbashview/bcc/apps/biglinux-tweaks/scripts/numlock/run
